@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +18,10 @@ public class Policy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "policy_id")
     private Integer policy_id;
+
+    @ManyToOne(targetEntity = Customer.class)
+    @JoinColumn(name = "customer_id")
+    private List<Customer> customer;
 
     @Column(name = "policy_num")
     private Integer policy_num;

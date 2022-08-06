@@ -35,8 +35,9 @@ public class LoginGUI extends JFrame {
                 ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
                 AgentService agentService = ctx.getBean(AgentService.class);
                 try {
-                    if (!agentService.getAgentLogin(fld_user_name.getText(), fld_user_password.getText())) {
+                    if (agentService.getAgentUsername(fld_user_name.getText(), fld_user_password.getText()).isEmpty()) {
                         Helper.showMsg("Kullanıcı Bulunamadı");
+                        LoginGUI loginGUI = new LoginGUI();
                     } else {
                         AgentGUI agentGUI = new AgentGUI();
                     }

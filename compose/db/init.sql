@@ -1,29 +1,34 @@
-CREATE TABLE public.policy (
-    policy_id bigint PRIMARY KEY NOT NULL,
-	policy_num bigint NOT NULL,
-    date_policy varchar NOT NULL,
-    unit_cost bigint NOT null,
-    car_model varchar null
-
-);
-
 CREATE TABLE public.customer (
-    cust_id bigint PRIMARY KEY NOT NULL,
+    cust_id bigint  NOT NULL,
 	first_name varchar NOT NULL,
     last_name varchar NOT NULL,
     age bigint NOT NULL,
-    phone varchar NOT null
-
+    phone varchar NOT null,
+    CONSTRAINT customer_pk PRIMARY KEY (cust_id)
 );
 
+
+CREATE TABLE public.policy (
+    policy_id bigint  NOT NULL,
+	policy_num bigint NOT NULL,
+    date_policy varchar NOT NULL,
+    unit_cost bigint NOT null,
+    car_model varchar null,
+    CONSTRAINT policy_pk PRIMARY KEY (policy_id),
+    customer_id bigint REFERENCES public.customer(cust_id)
+);
+
+
 CREATE TABLE public.agent (
-    agent_id bigint PRIMARY KEY NOT NULL,
+    agent_id bigint  NOT NULL,
 	first_name varchar NOT NULL,
     last_name varchar NOT NULL,
     user_name varchar NOT NULL,
-    password varchar NOT NULL
-
+    password varchar NOT NULL,
+    CONSTRAINT agent_pk PRIMARY KEY (agent_id),
+    customer_id bigint REFERENCES public.customer(cust_id)
 );
+
 
     insert into policy (policy_id, policy_num, date_policy, unit_cost, car_model) values (1, 166, '2021-12-09 16:58:28', 513, 'FJ Cruiser');
     insert into policy (policy_id, policy_num, date_policy, unit_cost, car_model) values (2, 349, '2022-07-08 07:16:33', 2623, '940');
@@ -227,17 +232,97 @@ CREATE TABLE public.agent (
     insert into customer (cust_id, first_name, last_name, age, phone) values (98, 'Gaynor', 'Allender', 75, '(116) 8058221');
     insert into customer (cust_id, first_name, last_name, age, phone) values (99, 'Carroll', 'Marns', 38, '(133) 5189857');
     insert into customer (cust_id, first_name, last_name, age, phone) values (100, 'Rebecca', 'Brumble', 33, '(561) 4584413');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (101, 'Katherine', 'Bloomer', 94, '(705) 3514981');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (102, 'Gilligan', 'Purselow', 41, '(680) 5978874');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (103, 'Gannon', 'Randerson', 82, '(271) 2023638');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (104, 'Emelia', 'Oliva', 98, '(877) 6707467');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (105, 'Randene', 'Laxen', 72, '(930) 6950754');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (106, 'Julietta', 'Dhenin', 39, '(808) 9325065');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (107, 'Taylor', 'Assender', 49, '(215) 3340160');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (108, 'Cordy', 'Franzen', 79, '(326) 9605031');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (109, 'Basil', 'Heber', 44, '(686) 4338089');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (110, 'Silas', 'Habbema', 96, '(885) 2255093');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (111, 'Shalne', 'Alsina', 70, '(119) 5949435');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (112, 'Osbert', 'Mallinar', 21, '(384) 6919953');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (113, 'Prisca', 'Botten', 70, '(608) 2000515');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (114, 'Nedi', 'Garrish', 61, '(379) 1956562');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (115, 'Niall', 'Sleney', 66, '(894) 6273406');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (116, 'Klemens', 'Tudge', 58, '(594) 4255291');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (117, 'Katha', 'Issit', 85, '(304) 8634975');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (118, 'Noreen', 'Bottjer', 65, '(294) 5366770');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (119, 'Luigi', 'Grove', 49, '(798) 4072011');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (120, 'Torrance', 'Rosenkrantz', 34, '(122) 7361337');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (121, 'Garland', 'Derell', 28, '(416) 9918006');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (122, 'Ario', 'Trevain', 52, '(960) 4393751');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (123, 'Mead', 'Duxfield', 85, '(993) 1148094');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (124, 'Dorie', 'Dufour', 21, '(791) 3136132');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (125, 'Michel', 'Sandells', 30, '(925) 1905548');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (126, 'Olympia', 'Agnew', 29, '(791) 3633296');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (127, 'Cosette', 'Dugget', 51, '(212) 6155849');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (128, 'Skell', 'Mc Comb', 56, '(331) 4055646');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (129, 'Magnum', 'Sentinella', 56, '(940) 4736511');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (130, 'Hugues', 'Leyborne', 80, '(760) 6527359');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (131, 'Ringo', 'Girardoni', 56, '(770) 4240525');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (132, 'Jayme', 'Bellchamber', 59, '(234) 6686308');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (133, 'Eal', 'Senten', 66, '(613) 8512089');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (134, 'Levon', 'Josiah', 84, '(881) 8827030');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (135, 'Morlee', 'Buckoke', 61, '(428) 3536025');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (136, 'Enriqueta', 'Cotta', 31, '(418) 7347511');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (137, 'Jamie', 'Davidman', 37, '(127) 2449237');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (138, 'Barbaraanne', 'Munro', 88, '(983) 1868523');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (139, 'Taddeo', 'Klehn', 39, '(800) 6313187');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (140, 'Theodora', 'Sarney', 48, '(433) 8194989');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (141, 'Valeria', 'Counter', 65, '(172) 5896486');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (142, 'Dianna', 'Bozworth', 89, '(477) 4959429');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (143, 'Felice', 'Gallienne', 64, '(163) 5667942');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (144, 'Marlie', 'Dadley', 80, '(747) 4480156');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (145, 'Jacqui', 'Hainsworth', 30, '(768) 9120114');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (146, 'Alethea', 'Ketteringham', 34, '(472) 2895054');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (147, 'Ellswerth', 'Eldrid', 28, '(852) 1622988');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (148, 'Lukas', 'Patesel', 34, '(412) 5124294');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (149, 'Hunter', 'Carnock', 76, '(392) 2699157');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (150, 'Hermia', 'Pratton', 73, '(729) 3117115');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (151, 'Spencer', 'Reffe', 52, '(961) 5359287');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (152, 'Karin', 'Garthshore', 90, '(602) 2767072');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (153, 'Nigel', 'Nutton', 85, '(219) 4698916');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (154, 'Isis', 'McEwen', 25, '(409) 8313742');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (155, 'Chaddy', 'Baselli', 61, '(643) 3163423');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (156, 'Guglielmo', 'Tabour', 41, '(103) 1635971');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (157, 'Nichols', 'Tomadoni', 97, '(961) 6083870');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (158, 'Teddie', 'MacGillivrie', 63, '(470) 3689487');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (159, 'Mona', 'Von Salzberg', 37, '(352) 6698490');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (160, 'Fayette', 'Kiloh', 26, '(789) 5937719');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (161, 'Guenna', 'Ravens', 42, '(379) 6942685');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (162, 'Alfons', 'Sleightholme', 93, '(445) 4207946');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (163, 'Lazare', 'Skirven', 39, '(953) 9599416');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (164, 'Tilda', 'Howat', 44, '(856) 4056564');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (165, 'Cameron', 'Huckstepp', 90, '(220) 4308972');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (166, 'Rabbi', 'Pawels', 94, '(411) 3864269');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (167, 'Denny', 'Bannister', 72, '(236) 7980993');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (168, 'Dotty', 'Brydson', 58, '(146) 1707114');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (169, 'Tomas', 'Fricke', 99, '(583) 2888266');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (170, 'Tabbie', 'Domaschke', 82, '(280) 4938141');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (171, 'Emalia', 'Svanetti', 62, '(535) 3649603');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (172, 'Gaylord', 'Sproat', 78, '(712) 2369911');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (173, 'Lloyd', 'Gopsall', 92, '(346) 1234048');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (174, 'Ewell', 'Eatttok', 23, '(227) 9206047');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (175, 'Margret', 'Nabbs', 98, '(790) 5340325');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (176, 'Joy', 'Riggeard', 44, '(990) 1260785');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (177, 'Coralie', 'Slingsby', 94, '(458) 8052088');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (178, 'Hortensia', 'Gogarty', 52, '(604) 5291464');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (179, 'Sayres', 'Hizir', 27, '(117) 8354947');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (180, 'Zeb', 'Branton', 97, '(311) 6827877');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (181, 'Erie', 'Tacey', 53, '(362) 5975565');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (182, 'Jayson', 'MacCoveney', 90, '(867) 2011479');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (183, 'Nero', 'Kohlerman', 74, '(237) 5401669');
+    insert into customer (cust_id, first_name, last_name, age, phone) values (184, 'Stacey', 'Eppson', 40, '(378) 9846241');
 
 
 
 
     INSERT INTO public.agent (agent_id,first_name,last_name,user_name,"password")
-	VALUES (1,'batuhan','aslan','batuhan1','12345');
+	VALUES (1,'batuhan','aslan','batuhan','anadolubank');
 
-	INSERT INTO public.agent (agent_id,first_name,last_name,user_name,"password")
-    VALUES (2,'ahmet','aslan','ahmet11','987654');
 
-    INSERT INTO public.agent (agent_id,first_name,last_name,user_name,"password")
-     VALUES (3,'ekin','aslan','ekin111','54321');
 
 

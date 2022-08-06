@@ -22,16 +22,6 @@ public class CustomerRepository {
         this.sessionFactory = sessionFactory;
     }
 
-    // select * from Customer where cost_id = ?
-    public Customer getCustomer(int cost_id) throws Exception {
-        Session session = this.sessionFactory.openSession();
-        Customer foundCustomer = session.get(Customer.class, cost_id);
-        if (foundCustomer != null) {
-            return foundCustomer;
-        }
-        throw new Exception("Product does not exist!");
-    }
-
     public List<Customer> getAllCustomer() {
         try {
             Session session = this.sessionFactory.openSession();

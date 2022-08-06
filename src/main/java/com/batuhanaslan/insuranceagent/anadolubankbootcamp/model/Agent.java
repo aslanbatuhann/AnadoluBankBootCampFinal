@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +19,10 @@ public class Agent {
     @Column(name = "agent_id")
     private int agent_id;
 
+    @OneToMany(targetEntity = Customer.class)
+    @JoinColumn(name = "customer_id")
+    private List<Customer> customer;
+
     @Column(name = "first_name")
     private String first_name;
 
@@ -28,5 +33,5 @@ public class Agent {
     private String user_name;
 
     @Column(name = "password")
-    private int password;
+    private String password;
 }

@@ -12,10 +12,6 @@ import java.util.List;
 public class CustomerService {
     private CustomerRepository customerRepository;
 
-    public Customer get(int id) throws Exception {
-        return customerRepository.getCustomer(id);
-    }
-
     public List<Customer> list() {
         return customerRepository.getAllCustomer();
     }

@@ -12,11 +12,8 @@ import java.util.List;
 public class AgentService {
     private AgentRepository agentRepository;
 
-    public boolean getAgentLogin(String user_name,String password) throws Exception {
-        return agentRepository.getAgentLogin(user_name,password);
-    }
-    public Agent get(int id) throws Exception {
-        return agentRepository.getAgent(id);
+    public List getAgentUsername(String user_name, String password) {
+        return agentRepository.getAgentUsername(user_name, password);
     }
 
     public List<Agent> list() {

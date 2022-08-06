@@ -12,16 +12,15 @@ import java.util.List;
 @Service
 @Data
 public class PolicyService {
-
     @Autowired
     private PolicyRepository policyRepository;
 
-    public Policy get(int id) throws Exception {
-        return policyRepository.getPolicy(id);
+    public ArrayList<Policy> getPolicyDate() throws Exception {
+        return policyRepository.getPolicyDate();
     }
 
-    public ArrayList<Policy> getPolicyDate(String date_policy) throws Exception {
-        return  policyRepository.getPolicyDate(date_policy);
+    public Double getPolicySum() {
+        return policyRepository.getPolicySum();
     }
 
     public List<Policy> list() {

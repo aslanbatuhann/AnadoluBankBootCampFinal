@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
-public class PolicyNumTest {
+public class PolicyServiceTest {
 
     private PolicyService policyService;
 
@@ -23,16 +23,13 @@ public class PolicyNumTest {
     }
 
     @Test
-    public void testPolicyNum() {
+    public void testPolicyList() {
 
         List<Policy> policyList = policyService.list();
 
         int actualSizeResult = policyList.size();
         int expectedSizeResult = 100;
         Assert.assertEquals(actualSizeResult, expectedSizeResult);
-
-        int actualPolicyNameResult = policyList.get(1).getPolicy_num();
-        int expectedPolicyNameResult = 349;
-        Assert.assertEquals(actualPolicyNameResult, expectedPolicyNameResult);
     }
+
 }
